@@ -1,4 +1,4 @@
-binary_installed() {
+package_installed() {
   name=$1
 
   is_met() {
