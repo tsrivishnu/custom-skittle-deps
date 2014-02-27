@@ -1,0 +1,9 @@
+# Get location of the zsh-loaded folder
+SYMLINK_LOCATION=`readlink ~/.zshrc`
+LIB_ZSH_ROOT=`dirname $SYMLINK_LOCATION`
+ZSH_LOADED_ROOT="$LIB_ZSH_ROOT/../../zsh-loaded"
+
+# Load .zsh files
+for file in $ZSH_LOADED_ROOT/*/*\.zsh; do
+  source $file
+done

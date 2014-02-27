@@ -1,16 +1,16 @@
 zsh() {
+  deps_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
   is_met() {
-    which zsh
+     [ $SHELL = "/bin/zsh" ]
   }
 
   meet() {
-    if [[ -x `which brew` ]]; then
-      brew install zsh
-    else
-      sudo apt-get install zsh
-    fi
     chsh -s /bin/zsh `whoami`
   }
 
+  require symlink_exists $deps_path/lib/zsh/zshrc.symlink $HOME/.zshrc
+  require symlink_exists $deps_path/lib/zsh/zsh-loaded $deps_path/zsh-loaded/zsh
+  require binary_installed zsh
   require package_manager
 }
