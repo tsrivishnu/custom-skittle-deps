@@ -1,7 +1,7 @@
 file_downloaded() {
   file=$1
   url=$2
-  path=(dirname $file)
+  path=$(dirname $file)
 
   echolog "Ensure $url downloaded to $file"
 
