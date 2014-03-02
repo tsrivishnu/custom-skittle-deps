@@ -2,6 +2,8 @@ binary_installed() {
   name=$1
   url=$2
 
+  echolog "Ensure binary $name is installed"
+
   is_met() {
     which $name
   }

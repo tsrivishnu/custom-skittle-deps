@@ -3,6 +3,8 @@ file_downloaded() {
   url=$2
   path=(dirname $file)
 
+  echolog "Ensure $url downloaded to $file"
+
   is_met() {
     [ -e $file ]
   }
