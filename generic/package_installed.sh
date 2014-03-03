@@ -9,7 +9,7 @@ package_installed() {
 
   meet() {
     if [[ -x `which brew` ]]; then
-      brew install $name
+      sudo brew install $name
     else
       sudo apt-get install $name
     fi
