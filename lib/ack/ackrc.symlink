@@ -1,2 +1,10 @@
---type-add=css:ext:scss
+# CSS files
+--type-add=css:ext:scss,sass
+# Log files
 --type-add=log:ext:log
+# Ruby files
+--type-add=ruby:is:Capfile
+--type-add=ruby:is:Gemfile
+# Default filters
+--nolog
+--nosql
