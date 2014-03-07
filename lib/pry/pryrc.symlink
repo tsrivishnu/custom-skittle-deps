@@ -1,0 +1,3 @@
+# Load Rails Console helpers like reload
+require "rails/console/app"
+extend Rails::ConsoleMethods
