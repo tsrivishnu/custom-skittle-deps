@@ -5,10 +5,10 @@ symlink_exists() {
   echolog "Ensure symlink $link exists to $source"
 
   is_met() {
-    [ -L $link ]
+    [ -L "$link" ]
   }
 
   meet() {
-    ln -s $source $link
+    ln -s "$source" "$link"
   }
 }

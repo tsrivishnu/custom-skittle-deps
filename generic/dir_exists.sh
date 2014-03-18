@@ -4,10 +4,10 @@ dir_exists() {
   echolog "Ensure directory $dirname exists"
 
   is_met() {
-    [ -d $dirname ]
+    [ -d "$dirname" ]
   }
 
   meet() {
-    mkdir -p $dirname
+    mkdir -p "$dirname"
   }
 }
