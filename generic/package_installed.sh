@@ -10,6 +10,7 @@ package_installed() {
 
   meet() {
     if [[ -x `which brew` ]]; then
+      sudo brew update
       sudo brew install $name
     else
       if [[ $apt_name == "" ]]; then
