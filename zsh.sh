@@ -6,7 +6,7 @@ zsh() {
   }
 
   meet() {
-    chsh -s /bin/zsh `whoami`
+    sudo chsh -s /bin/zsh `whoami`
   }
 
   require symlink_exists $deps_path/lib/zsh/zshrc.symlink $HOME/.zshrc
