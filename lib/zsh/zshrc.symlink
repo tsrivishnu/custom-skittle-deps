@@ -7,3 +7,5 @@ ZSH_LOADED_ROOT="$LIB_ZSH_ROOT/../../zsh-loaded"
 for file in $ZSH_LOADED_ROOT/*/*\.zsh; do
   source $file
 done
+
+source $ZSH_LOADED_ROOT/overwrites.zsh
