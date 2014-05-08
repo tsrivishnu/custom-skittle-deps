@@ -35,5 +35,5 @@ function precmd() {
 $fg[cyan]%D{%H:%M} $USERNAME $fg[yellow]%c $(prompt_git)'
 }
 
-PROMPT='%{$reset_color%}%{$reset_color%}→ '
+PROMPT='%{$reset_color%}%{$reset_color%}%(?..$fg[red][%?]$reset_color )→ '
 RPROMPT=''
