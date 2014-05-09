@@ -8,4 +8,7 @@ for file in $ZSH_LOADED_ROOT/*/*\.zsh; do
   source $file
 done
 
-source $ZSH_LOADED_ROOT/overwrites.zsh
+if [ -e $ZSH_LOADED_ROOT/overwrites.zsh ];
+then
+  source $ZSH_LOADED_ROOT/overwrites.zsh
+fi
