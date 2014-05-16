@@ -21,4 +21,6 @@ package_installed() {
       fi
     fi
   }
+
+  require package_manager
 }
