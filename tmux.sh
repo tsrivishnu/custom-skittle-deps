@@ -3,4 +3,5 @@ tmux() {
 
   require package_installed tmux
   require symlink_exists $deps_path/lib/tmux/tmux.conf.symlink $HOME/.tmux.conf
+  require symlink_exists $deps_path/lib/tmux/zsh-loaded $deps_path/zsh-loaded/tmux
 }
