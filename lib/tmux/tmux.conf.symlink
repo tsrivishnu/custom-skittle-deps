@@ -1,0 +1,4 @@
+# Set prefix key to CTRL + A
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
