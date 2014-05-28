@@ -2,3 +2,11 @@
 set -g prefix C-a
 unbind C-b
 bind C-a send-prefix
+
+# Reload ~/.tmux.conf using PREFIX r
+bind r source-file ~/.tmux.conf \;
+
+# Customize status bar
+set-option -g status-bg colour236
+set-option -g status-fg white
+set-option -g status-attr default
