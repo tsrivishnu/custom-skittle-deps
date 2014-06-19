@@ -4,6 +4,8 @@
 --type-add=log=.log
 # Ruby files
 --type-add=ruby=Capfile,Gemfile
+# Go files
+--type-add=go=.go
 # Default filters
 --nolog
 --nosql
