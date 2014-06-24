@@ -16,3 +16,9 @@ set-option -g status-attr default
 
 # Start window index with 1, easier to reach
 set -g base-index 1
+
+# Copy useful environment variables into new shells
+set -g update-environment -r
+
+# Correct colors
+set -g default-terminal "screen-256color"
