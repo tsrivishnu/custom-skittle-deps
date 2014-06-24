@@ -1,7 +1,7 @@
-# Set prefix key to CTRL + A
-set -g prefix C-a
+# Set prefix key to CTRL + Q
+set -g prefix C-q
 unbind C-b
-bind C-a send-prefix
+bind C-q send-prefix
 
 # Reload ~/.tmux.conf using PREFIX r
 bind r source-file ~/.tmux.conf \;
