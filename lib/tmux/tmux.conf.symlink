@@ -17,6 +17,9 @@ set-option -g status-attr default
 # Start window index with 1, easier to reach
 set -g base-index 1
 
+# Don't rename windows
+set-option -g allow-rename off
+
 # Copy useful environment variables into new shells
 set -g update-environment -r
 
