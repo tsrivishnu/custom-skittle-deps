@@ -20,6 +20,9 @@ set -g base-index 1
 # Don't rename windows
 set-option -g allow-rename off
 
+# Highlight current window
+set-window-option -g window-status-current-fg green
+
 # Copy useful environment variables into new shells
 set -g update-environment -r
 
