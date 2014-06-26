@@ -31,8 +31,9 @@ prompt_git() {
 }
 
 function precmd() {
+  current_time=`TZ=Australia/Melbourne date +'%H:%M'`
   print -rP '
-$fg[cyan]%D{%H:%M} $USERNAME $fg[yellow]%c $(prompt_git)'
+$fg[cyan]%D{$current_time} $USERNAME $fg[yellow]%c $(prompt_git)'
 }
 
 PROMPT='%{$reset_color%}%{$reset_color%}%(?..$fg[red][%?]$reset_color )→ '
