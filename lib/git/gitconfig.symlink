@@ -11,6 +11,7 @@
   hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
   today = log --since=midnight --author=\"Michael Sauter\" --oneline --color
   contributors = shortlog -s -n
+  amend = commit --amend
 [core]
   excludesfile = ~/.gitignore
   editor = vim
