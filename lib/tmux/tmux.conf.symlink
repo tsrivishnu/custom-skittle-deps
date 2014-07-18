@@ -3,16 +3,30 @@ set -g prefix C-q
 unbind C-b
 bind C-q send-prefix
 
+# Panes
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# Zoom
+unbind-key Space
+bind Space resize-pane -Z
+
 # Reload ~/.tmux.conf using PREFIX r
 bind r source-file ~/.tmux.conf \;
 
 # Use mouse for copy mode, choice mode etc.
 set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
 
 # Customize status bar
-set-option -g status-bg colour236
-set-option -g status-fg white
+set-option -g status-bg colour23
+set-option -g status-fg colour14
 set-option -g status-attr default
+
+# Left hand side
+set -g status-left ' #S'
 
 # Right hand side
 set -g status-right "#(TZ=Australia/Melbourne date +'%%d %%b %%Y %%H:%%M %%Z') "
@@ -24,7 +38,7 @@ set -g base-index 1
 set-option -g allow-rename off
 
 # Highlight current window
-set-window-option -g window-status-current-fg green
+set-window-option -g window-status-current-fg white
 
 # Copy useful environment variables into new shells
 set -g update-environment -r
