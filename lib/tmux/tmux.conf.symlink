@@ -41,7 +41,7 @@ set-option -g allow-rename off
 set-window-option -g window-status-current-fg white
 
 # Copy useful environment variables into new shells
-set -g update-environment -r
+set-option -g update-environment "SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION"
 
 # Correct colors
 set -g default-terminal "screen-256color"
