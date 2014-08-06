@@ -4,7 +4,7 @@
   signingkey = 7C60D5D6
 [alias]
   co = checkout
-  ci = commit -S -m
+  ci = commit -m
   st = status
   br = branch
   dc = diff --cached
@@ -15,6 +15,7 @@
   amend = commit --amend
   delete = branch -D
   rename = branch -m
+  stag = tag --sign
 [core]
   excludesfile = ~/.gitignore
   editor = vim
