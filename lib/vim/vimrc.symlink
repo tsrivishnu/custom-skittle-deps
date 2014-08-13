@@ -1,5 +1,16 @@
-syntax on
+" Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+call vundle#end()
+filetype plugin indent on
 
+" Misc
+syntax on
+hi Normal ctermbg=NONE
+
+" Settings
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set encoding=utf-8
@@ -16,5 +27,3 @@ set smartcase                                                " case-sensitive se
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 set tabstop=1                                                " actual tabs occupy 8 characters
 set relativenumber
-
-hi Normal ctermbg=NONE
