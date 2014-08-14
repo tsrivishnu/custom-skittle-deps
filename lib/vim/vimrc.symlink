@@ -35,9 +35,6 @@ runtime macros/matchit.vim
 " Number of commands remembered.
 set history=1000
 
-" Highlight the screen line of the cursor
-set cursorline
-
 " Indention
 set smartindent
 
