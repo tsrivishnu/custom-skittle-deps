@@ -3,6 +3,12 @@ set -g prefix C-q
 unbind C-b
 bind C-q send-prefix
 
+# Time tmux waits while intercepting escape key.
+set -sg escape-time 0
+
+# Time tmux waits for repeated commands.
+set -g repeat-time 0
+
 # Panes
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
