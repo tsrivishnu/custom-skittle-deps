@@ -13,9 +13,9 @@ package_installed() {
     if [[ -x `which brew` ]]; then
       sudo brew update
       if [[ $brew_name == "" ]]; then
-        sudo brew install $binary_name
+        brew install $binary_name
       else
-        sudo brew install $brew_name
+        brew install $brew_name
       fi
     else
       if [[ $apt_name == "" ]]; then
