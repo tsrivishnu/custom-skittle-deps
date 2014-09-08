@@ -23,9 +23,9 @@ prompt_git() {
         ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
         local output="${ref/refs\/heads\//⭠  }$dirty"
         if [[ -n $dirty ]]; then
-          echo -n "$fg[red]$output"
+          echo -n "%F{red}$output%f"
         else
-          echo -n "$fg[green]$output"
+          echo -n "%F{green}$output%f"
             fi
             fi
 }
@@ -33,8 +33,8 @@ prompt_git() {
 function precmd() {
   current_time=`TZ=Australia/Melbourne date +'%H:%M'`
   print -rP '
-$fg[cyan]%D{$current_time} $USERNAME $fg[yellow]%c $(prompt_git)'
+%F{cyan}%D{$current_time} $USERNAME%f %F{yellow}%c%f $(prompt_git)'
 }
 
-PROMPT='%{$reset_color%}%{$reset_color%}%(?..$fg[red][%?]$reset_color )→ '
+PROMPT='%(?..%F{red}[%?]%f )→ '
 RPROMPT=''
