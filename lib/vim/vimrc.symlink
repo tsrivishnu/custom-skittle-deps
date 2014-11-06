@@ -1,4 +1,4 @@
-" General
+" Disable vi compatibility
 set nocompatible
 filetype off
 
@@ -8,8 +8,20 @@ call vundle#begin()
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'lokaltog/vim-easymotion'
+Plugin 'fatih/vim-go'
 call vundle#end()
-filetype plugin indent on
+
+" Load indent file for the current filetype
+filetype indent on
+filetype plugin on
+
+" Indentation; 2 space default
+set smartindent
+set autoindent
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " Misc
 syntax on
@@ -34,26 +46,17 @@ runtime macros/matchit.vim
 " Number of commands remembered.
 set history=1000
 
-" Indention
-set smartindent
-
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set encoding=utf-8
 set laststatus=2                                             " always show statusline
-set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
-set ruler                                                    " show where you are
-set scrolloff=3                                              " show context above/below cursorline
+set scrolloff=5                                              " show context above/below cursorline
 
 " Search (case-insensitive unless caps)
 set ignorecase
 set smartcase
 
-" Tabs
-set expandtab
-set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
-set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
-set tabstop=2
+" Ruler and line numbers
+set ruler
 set relativenumber
 
 """"""""""
