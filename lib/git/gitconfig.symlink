@@ -18,6 +18,7 @@
   rename = branch -m
   ts = tag --sign # GPG signing for tags
   cs = commit --signoff # Signed-off-by line for commits
+  cleanup = "!git branch --merged | grep -v 'master' | xargs -n 1 git branch -d"
 [core]
   excludesfile = ~/.gitignore
   editor = vim
