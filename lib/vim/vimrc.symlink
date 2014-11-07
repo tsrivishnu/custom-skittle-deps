@@ -7,8 +7,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'lokaltog/vim-easymotion'
-Plugin 'fatih/vim-go'
 call vundle#end()
 
 " Load indent file for the current filetype
