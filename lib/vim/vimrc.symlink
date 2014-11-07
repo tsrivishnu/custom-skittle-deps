@@ -23,9 +23,24 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+" Mapping and escape timeouts
+set timeout
+set timeoutlen=1000 " mapped sequences
+set ttimeoutlen=10  " escape sequence delay
+
+" Tab completion for Vim command line
+set wildmenu
+set wildmode=list:longest
+
 " Misc
 syntax on
 hi Normal ctermbg=NONE
+set ttyfast
+
+" Darker background after 80 characters
+set textwidth=80
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Allow unsaved buffers to be hidden (backgrounded).
 set hidden
@@ -58,6 +73,15 @@ set smartcase
 " Ruler and line numbers
 set ruler
 set relativenumber
+set number
+
+" Split to right side
+set splitright
+
+" Whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 """"""""""
 " Keyboard and Shortcuts
