@@ -1,8 +1,8 @@
 " Disable vi compatibility
 set nocompatible
-filetype off
 
 " Vundle
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'kien/ctrlp.vim'
@@ -13,13 +13,14 @@ call vundle#end()
 filetype indent on
 filetype plugin on
 
-" Indentation; 2 space default
+" Indentation and blank line
 set smartindent
 set autoindent
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set eol
 
 " Mapping and escape timeouts
 set timeout
@@ -44,9 +45,6 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 set hidden
 
 " Link vim's default delete/yank register to the system clipboard.
-" When the "unnamed" string is included in the 'clipboard' option, the unnamed
-" register is the same as the "* register.  Thus you can yank to and paste the
-" selection without prepending "* to commands.
 set clipboard=unnamed
 
 " Mouse for scrolling etc in console.
@@ -59,10 +57,17 @@ runtime macros/matchit.vim
 " Number of commands remembered.
 set history=1000
 
-set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
+" Reload files when changed on disk
+set autoread
+
+" UTF-8 by default
 set encoding=utf-8
-set laststatus=2                                             " always show statusline
-set scrolloff=5                                              " show context above/below cursorline
+
+" Always show status line
+set laststatus=2
+
+" Show context above/below cursorline
+set scrolloff=5
 
 " Search (case-insensitive unless caps)
 set ignorecase
@@ -80,6 +85,11 @@ set splitright
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
+
+" No ~backup and .swp files
+set nobackup
+set nowritebackup
+set noswapfile
 
 """"""""""
 " Keyboard and Shortcuts
