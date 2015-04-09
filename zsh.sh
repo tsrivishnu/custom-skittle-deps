@@ -1,6 +1,6 @@
 zsh() {
   is_met() {
-     [ $SHELL = "/bin/zsh" ]
+    [[ $SHELL = "/bin/zsh" || $SHELL = "/usr/bin/zsh" ]]
   }
 
   meet() {
