@@ -51,3 +51,6 @@ set-option -g update-environment "SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CO
 
 # Correct colors
 set -g default-terminal "screen-256color"
+
+# Scrollback history
+set-option -g history-limit 5000
