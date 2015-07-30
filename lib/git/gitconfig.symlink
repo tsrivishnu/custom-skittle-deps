@@ -28,5 +28,3 @@
   ui = true
 [push]
   default = current
-[branch]
-  autosetupmerge = always
