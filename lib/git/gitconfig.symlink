@@ -14,6 +14,7 @@
   today = log --since=midnight --author=\"Michael Sauter\" --oneline --color
   contributors = shortlog -s -n -e
   amend = commit --amend
+  un-amend = reset --soft HEAD@{1}
   delete = branch -D
   rename = branch -m
   ts = tag --sign # GPG signing for tags
