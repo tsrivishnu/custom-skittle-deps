@@ -1,3 +1,5 @@
+# always color, even when piping to a program.
+--color
 # CSS files
 --type-add=css=.scss,.sass
 # Log files
