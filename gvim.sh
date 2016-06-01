@@ -1,5 +1,5 @@
 gvim() {
-  require package_installed gvim vim-gnome
+  require package_installed gvim vim-gnome macvim
   require symlink_exists $p/lib/gvim/vimrc.symlink $HOME/.vimrc
   require repo_cloned https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
   require backups_folder
