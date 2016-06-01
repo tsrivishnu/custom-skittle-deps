@@ -31,7 +31,7 @@ prompt_git() {
 }
 
 function precmd() {
-  current_time=`TZ=Europe/Berlin date +'%H:%M'`
+  current_time=`date +'%H:%M'`
   print -rP '
 %F{cyan}%D{$current_time} $USERNAME%f %F{yellow}%c%f $(prompt_git)'
 }
