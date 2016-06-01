@@ -35,7 +35,7 @@ set-option -g status-attr default
 set -g status-left ' #S'
 
 # Right hand side
-set -g status-right "#(TZ=Europe/Berlin date +'%%d %%b %%Y %%H:%%M %%Z') "
+set -g status-right "#(date +'%%d %%b %%Y %%H:%%M %%Z') "
 
 # Start window index with 1, easier to reach
 set -g base-index 1
