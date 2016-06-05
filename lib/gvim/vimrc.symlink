@@ -46,6 +46,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
+Plugin 'hdima/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
