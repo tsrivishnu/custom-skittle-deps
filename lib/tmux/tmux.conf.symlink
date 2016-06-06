@@ -20,16 +20,6 @@ bind Space resize-pane -Z
 # Reload ~/.tmux.conf using PREFIX r
 bind r source-file ~/.tmux.conf \;
 
-# Use mouse for copy mode, choice mode etc.
-set -g mouse on
-bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
-bind -n WheelDownPane select-pane -t= \; send-keys -M
-bind -n C-WheelUpPane select-pane -t= \; copy-mode -e \; send-keys -M
-bind -t vi-copy    C-WheelUpPane   halfpage-up
-bind -t vi-copy    C-WheelDownPane halfpage-down
-bind -t emacs-copy C-WheelUpPane   halfpage-up
-bind -t emacs-copy C-WheelDownPane halfpage-down
-
 # Customize status bar
 set-option -g status-bg colour236
 set-option -g status-fg colour14
@@ -58,3 +48,6 @@ set -g default-terminal "screen-256color"
 
 # Scrollback history
 set-option -g history-limit 10000
+
+# load OS-specific configuration
+if-shell "uname | grep -q Darwin" "source-file ~/.tmux-macosx.conf" "source-file ~/.tmux-linux.conf"
