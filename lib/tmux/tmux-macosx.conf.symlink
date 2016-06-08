@@ -7,3 +7,4 @@ bind -t vi-copy    C-WheelUpPane   halfpage-up
 bind -t vi-copy    C-WheelDownPane halfpage-down
 bind -t emacs-copy C-WheelUpPane   halfpage-up
 bind -t emacs-copy C-WheelDownPane halfpage-down
+set -g default-command "reattach-to-user-namespace -l /bin/zsh"
