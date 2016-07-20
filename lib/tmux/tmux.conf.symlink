@@ -40,6 +40,9 @@ set-option -g allow-rename off
 # Highlight current window
 set-window-option -g window-status-current-fg white
 
+# Set Vi Mode
+set-window-option -g mode-keys vi
+
 # Copy useful environment variables into new shells
 set-option -g update-environment "SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID SSH_CONNECTION"
 
