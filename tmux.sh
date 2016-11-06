@@ -7,6 +7,8 @@ tmux() {
 
   if [[ "$(uname)" = "Darwin" ]]; then
     # https://www.elmund.io/osx/2015/07/10/open-command-in-osx-tmux/
+    # or to get copy to system clipboard on OS X check
+    #   https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
     require package_installed reattach-to-user-namespace
     brew upgrade reattach-to-user-namespace
   fi
