@@ -50,6 +50,7 @@ Plugin 'cyphactor/vim-open-alternate'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -261,17 +262,27 @@ augroup END
 
 " Plugins {{{
 
+" ack use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 "" Ignore rules
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip              " MacOSX/Linux
 set wildignore+=*/node_modules/*,*/bower_components/* " Node.js
 set wildignore+=*/dist/*                   " Meh
+set wildignore+=*/.bundle/* " Ruby
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|bundle)$'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_files = 100000
 
 nmap <C-i> :CtrlPBuffer<cr>
 " to make open in new tab default
