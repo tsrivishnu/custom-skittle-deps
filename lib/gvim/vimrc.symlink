@@ -314,8 +314,6 @@ highlight GitGutterChange ctermfg=yellow guifg=darkyellow
 highlight GitGutterDelete ctermfg=red guifg=darkred
 highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
-" Syntax folding
-set foldmethod=syntax
 " disable folding
 set nofoldenable
 
