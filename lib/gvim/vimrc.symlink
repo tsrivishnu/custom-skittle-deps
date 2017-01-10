@@ -9,7 +9,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " to be able to copy and paste from the clipboard
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed
+else
+  "Linux
+  set clipboard=unnamedplus
+endif
 
 " let Vundle manage Vundle, required
 "" Vim config
