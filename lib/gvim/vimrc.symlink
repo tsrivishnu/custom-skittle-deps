@@ -226,13 +226,13 @@ nnoremap <leader>r :%s/:\(\w*\)\s*=>\s*/\1: /gc<cr>
 
 " Copy file path/name to clipboard
 " Copy current buffer path relative to root of VIM session to system clipboard
-nnoremap <Leader>yrp :let @*=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
+nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
 " Copy current buffer full path
-nnoremap <Leader>yp :let @*=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
+nnoremap <Leader>yp :let @+=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
 " Copy current filename to system clipboard
-nnoremap <Leader>yf :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
+nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
 " Copy current buffer path without filename to system clipboard
-nnoremap <Leader>yd :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
+nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
 
 " }}}
 
