@@ -7,4 +7,5 @@ bootstrap() {
   require ack
   require tmux
   require wget
+  require ag
 }

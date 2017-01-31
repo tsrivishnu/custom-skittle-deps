@@ -8,4 +8,5 @@ mac_bootstrap() {
   require tmux
   require sublime_text_3
   require wget
+  require ag
 }
