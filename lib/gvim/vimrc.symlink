@@ -289,6 +289,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 100000
+let g:ctrlp_match_window = 'results:100' " overcome limit imposed by max height
 
 nmap <C-i> :CtrlPBuffer<cr>
 " to make open in new tab default
