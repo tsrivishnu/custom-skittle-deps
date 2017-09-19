@@ -90,6 +90,13 @@ set ttyfast
 set wildmode=longest:full,list:full,list:longest
 set wildchar=<TAB>
 
+" Show wildmenu to navigate over options with tab
+" for a command that is run
+set wildmenu
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+
 " Line numbers are nice
 set ruler
 
@@ -200,6 +207,10 @@ nnoremap <leader>w <C-w>v<C-w>l
 " Horizontal split
 nnoremap <leader>h <C-w>s<C-w>l
 
+" resize window to fullsize or otherwise
+nnoremap <leader>+ <C-w>_<C-w>\|
+nnoremap <leader>= <C-w>=
+
 " j-k smash
 inoremap jk <esc>
 inoremap kj <esc>
@@ -213,7 +224,6 @@ nnoremap ; :
 " Buffer commands
 nmap <c-b> :bprevious<CR>
 nmap <c-n> :bnext<CR>
-nmap bb :bw<CR>
 
 " Turn off nohlsearch
 nmap <silent> <leader><Space> :nohlsearch<CR>
