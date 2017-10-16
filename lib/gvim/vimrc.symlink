@@ -190,15 +190,15 @@ set directory=~/.vim/backup/
 
 " Colors {{{
 set t_ut=
-set t_co=256
+set t_Co=256
 syntax enable
 set background=light
 colorscheme solarized
-" let g:gruvbox_contrast_dark = "hard"
-" let g:gruvbox_contrast_light = "medium"
-" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
 nnoremap H :set cursorline!<CR>
 " }}}
+
+" Rspec command. Expects rspec executable to be present at +.vim/bin/rspec+
+let g:rspec_command = "!.vim/bin/rspec {spec}"
 
 " Key commands {{{
 
@@ -224,6 +224,12 @@ inoremap kj <esc>
 
 " Save, yo
 nnoremap <cr> :w<cr>
+
+" Switch between dark and light backgrounds
+nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Start FZF
+nmap <leader>ff :FZF<CR>
 
 " Better command keys
 nnoremap ; :
@@ -327,6 +333,12 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+
+" RSpec.vim mappings
+map <Leader>st :call RunCurrentSpecFile()<CR>
+map <Leader>ss :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
 
 " OpenAlternate
 nnoremap <leader>. :OpenAlternate<cr>
