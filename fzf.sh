@@ -8,5 +8,6 @@ fzf() {
   }
 
   require repo_cloned https://github.com/junegunn/fzf.git $HOME/.fzf
+  require symlink_exists $p/lib/fzf/fzf.zsh.symlink $HOME/.fzf.zsh
   require symlink_exists $p/lib/fzf/zsh-loaded $p/zsh-loaded/fzf
 }
