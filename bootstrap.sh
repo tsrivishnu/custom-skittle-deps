@@ -8,4 +8,5 @@ bootstrap() {
   require tmux
   require wget
   require ag
+  require redshift
 }
