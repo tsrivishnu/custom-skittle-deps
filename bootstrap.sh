@@ -9,4 +9,5 @@ bootstrap() {
   require wget
   require ag
   require redshift
+  requrie fzf
 }
