@@ -36,7 +36,6 @@ Plugin 'rking/ag.vim'
 "" Language specific
 Plugin 'fatih/vim-go'
 Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'tpope/vim-rails'
@@ -50,9 +49,9 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/Align'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'cyphactor/vim-open-alternate'
@@ -60,7 +59,7 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'mileszs/ack.vim'
-
+let s:usestate = 0
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -188,6 +187,9 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 " }}}
 
+" set the cursorline
+set cursorline
+
 " Colors {{{
 set t_ut=
 set t_Co=256
@@ -278,6 +280,11 @@ augroup END
 augroup handlebars
     au!
     au BufNewFile,BufRead *.hbs,*.hbs.ember setlocal filetype=mustache
+augroup END
+
+augroup ssml
+    au!
+    au BufNewFile,BufRead *.ssml.erb setlocal filetype=eruby.xml
 augroup END
 
 augroup ft_go

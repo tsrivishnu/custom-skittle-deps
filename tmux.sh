@@ -11,9 +11,7 @@ tmux() {
     #   https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
     require package_installed reattach-to-user-namespace
     brew upgrade reattach-to-user-namespace
-  fi
-
-  if [[ "$(uname)" = "Darwin" ]]; then
+  else
     # Enable to copy to system clipboard
     # http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/
     require package_installed xclip
