@@ -333,6 +333,9 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
+" Ignore .gitignore'd files in FZF
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="solarized"
