@@ -6,7 +6,6 @@ mac_bootstrap() {
   require vim
   require ack
   require tmux
-  require sublime_text_3
   require wget
   require ag
 }
