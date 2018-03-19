@@ -58,7 +58,7 @@ set-option -g history-limit 10000
 # Use vim keybindings in copy mode
 setw -g mode-keys vi
 # Setup 'v' to begin selection as in Vim
-bind-key -t vi-copy v begin-selection
+bind-key -T copy-mode-vi 'v' send -X begin-selection
 
 # load OS-specific configuration
 if-shell "uname | grep -q Darwin" "source-file ~/.tmux-macosx.conf" "source-file ~/.tmux-linux.conf"

@@ -1,15 +1,15 @@
 # Use mouse for copy mode, choice mode etc.
 set -g mouse on
-bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
-bind -n WheelDownPane select-pane -t= \; send-keys -M
-bind -n C-WheelUpPane select-pane -t= \; copy-mode -e \; send-keys -M
-bind -t vi-copy    C-WheelUpPane   halfpage-up
-bind -t vi-copy    C-WheelDownPane halfpage-down
-bind -t emacs-copy C-WheelUpPane   halfpage-up
-bind -t emacs-copy C-WheelDownPane halfpage-down
-set -g default-command "reattach-to-user-namespace -l /bin/zsh"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
 
-# bind key 'y' to copy to OS X clipboard
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-# Update default binding of `Enter` to also use copy-pipe
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+
+# Hit +y+ to yank the selection to system clipboard
+# Setting to start selection with +v+ are in +tmux.conf.symlink+ file
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+#
+# Hit +Enter+ to copy selected text
+# unbind -Tcopy-mode-vi Enter
+bind-key -T copy-mode Enter send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
