@@ -1,0 +1,28 @@
+#!/bin/bash
+#PUT THIS FILE IN ~/.local/share/rofi/finder.sh
+#USE: rofi  -show find -modi find:~/.local/share/rofi/finder.sh
+if [ ! -z "$@" ]
+then
+  cd $HOME
+  QUERY=$@
+  coproc ( xdg-open "${QUERY%\/* \?\?}"  > /dev/null 2>&1 )
+  exec 1>&-
+  exit;
+  if [[ "$@" == /* ]]
+  then
+    if [[ "$@" == *\?\? ]]
+    then
+      coproc ( xdg-open "${QUERY%\/* \?\?}"  > /dev/null 2>&1 )
+      exec 1>&-
+      exit;
+    else
+      coproc ( xdg-open "$@"  > /dev/null 2>&1 )
+      exec 1>&-
+      exit;
+    fi
+  else
+    ag ~/ -l --nocolor -g "" 2>&1
+  fi
+else
+  ag ~/ -l --nocolor -g "" 2>&1
+fi
