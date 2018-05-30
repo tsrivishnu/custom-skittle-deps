@@ -8,9 +8,19 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" to be able to copy and paste from the clipboard
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed
+else
+  "Linux
+  set clipboard=unnamedplus
+endif
+
 " let Vundle manage Vundle, required
 "" Vim config
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'endwise.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -18,6 +28,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'junegunn/fzf'
 "" Shell/non-Vim interfacing
 Plugin 'airblade/vim-gitgutter'
 Plugin 'amiel/vim-tmux-navigator'
@@ -25,9 +36,10 @@ Plugin 'rking/ag.vim'
 "" Language specific
 Plugin 'fatih/vim-go'
 Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'davidoc/taskpaper.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-ragtag'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
@@ -37,15 +49,17 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/Align'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
-
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'mileszs/ack.vim'
+let s:usestate = 0
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -77,6 +91,13 @@ set ttyfast
 " Path/file expansion in colon-mode.
 set wildmode=longest:full,list:full,list:longest
 set wildchar=<TAB>
+
+" Show wildmenu to navigate over options with tab
+" for a command that is run
+set wildmenu
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
 
 " Line numbers are nice
 set ruler
@@ -166,13 +187,20 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 " }}}
 
+" set the cursorline
+set cursorline
+
 " Colors {{{
+set t_ut=
+set t_Co=256
 syntax enable
-set background=dark
-colorscheme desert
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
+set background=light
+colorscheme solarized
 nnoremap H :set cursorline!<CR>
 " }}}
+
+" Rspec command. Expects rspec executable to be present at +.vim/bin/rspec+
+let g:rspec_command = "!.vim/bin/rspec {spec}"
 
 " Key commands {{{
 
@@ -188,6 +216,10 @@ nnoremap <leader>w <C-w>v<C-w>l
 " Horizontal split
 nnoremap <leader>h <C-w>s<C-w>l
 
+" resize window to fullsize or otherwise
+nnoremap <leader>+ <C-w>_<C-w>\|
+nnoremap <leader>= <C-w>=
+
 " j-k smash
 inoremap jk <esc>
 inoremap kj <esc>
@@ -195,13 +227,18 @@ inoremap kj <esc>
 " Save, yo
 nnoremap <cr> :w<cr>
 
+" Switch between dark and light backgrounds
+nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Start FZF
+nmap <leader>ff :FZF<CR>
+
 " Better command keys
 nnoremap ; :
 
 " Buffer commands
 nmap <c-b> :bprevious<CR>
 nmap <c-n> :bnext<CR>
-nmap bb :bw<CR>
 
 " Turn off nohlsearch
 nmap <silent> <leader><Space> :nohlsearch<CR>
@@ -214,13 +251,13 @@ nnoremap <leader>r :%s/:\(\w*\)\s*=>\s*/\1: /gc<cr>
 
 " Copy file path/name to clipboard
 " Copy current buffer path relative to root of VIM session to system clipboard
-nnoremap <Leader>yrp :let @*=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
+nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
 " Copy current buffer full path
-nnoremap <Leader>yp :let @*=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
+nnoremap <Leader>yp :let @+=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
 " Copy current filename to system clipboard
-nnoremap <Leader>yf :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
+nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
 " Copy current buffer path without filename to system clipboard
-nnoremap <Leader>yd :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
+nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
 
 " }}}
 
@@ -245,6 +282,11 @@ augroup handlebars
     au BufNewFile,BufRead *.hbs,*.hbs.ember setlocal filetype=mustache
 augroup END
 
+augroup ssml
+    au!
+    au BufNewFile,BufRead *.ssml.erb setlocal filetype=eruby.xml
+augroup END
+
 augroup ft_go
     au!
 
@@ -256,17 +298,28 @@ augroup END
 
 " Plugins {{{
 
+" ack use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 "" Ignore rules
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip              " MacOSX/Linux
 set wildignore+=*/node_modules/*,*/bower_components/* " Node.js
 set wildignore+=*/dist/*                   " Meh
+set wildignore+=*/.bundle/* " Ruby
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|bundle)$'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_files = 100000
+let g:ctrlp_match_window = 'results:100' " overcome limit imposed by max height
 
 nmap <C-i> :CtrlPBuffer<cr>
 " to make open in new tab default
@@ -280,6 +333,9 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
+" Ignore .gitignore'd files in FZF
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="solarized"
@@ -287,6 +343,12 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+
+" RSpec.vim mappings
+map <Leader>st :call RunCurrentSpecFile()<CR>
+map <Leader>ss :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
 
 " OpenAlternate
 nnoremap <leader>. :OpenAlternate<cr>
@@ -298,8 +360,6 @@ highlight GitGutterChange ctermfg=yellow guifg=darkyellow
 highlight GitGutterDelete ctermfg=red guifg=darkred
 highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
-" Syntax folding
-set foldmethod=syntax
 " disable folding
 set nofoldenable
 
