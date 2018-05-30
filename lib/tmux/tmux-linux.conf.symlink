@@ -3,4 +3,4 @@ set -g mouse on
 
 # For copy to system clipboard.
 # See: http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/
-bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
