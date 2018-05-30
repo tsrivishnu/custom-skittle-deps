@@ -1,6 +1,5 @@
 bootstrap() {
   require package_manager
-  require pip
   require zsh
   require git
   require ack
@@ -10,4 +9,5 @@ bootstrap() {
   require redshift
   requrie fzf
   require rofi
+  require vim
 }

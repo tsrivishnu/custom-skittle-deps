@@ -1,5 +1,4 @@
-pip() {
-
+pip() { 
   is_met() {
     which pip
   }
