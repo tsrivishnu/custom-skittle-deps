@@ -17,6 +17,10 @@ else
   set clipboard=unnamedplus
 endif
 
+set mouse=r
+
+" let g:solarized_termcolors=256
+
 " let Vundle manage Vundle, required
 "" Vim config
 Plugin 'vim-airline/vim-airline'
@@ -191,8 +195,8 @@ set directory=~/.vim/backup/
 set cursorline
 
 " Colors {{{
-set t_ut=
-set t_Co=256
+" set t_ut=
+" set t_Co=256
 syntax enable
 set background=light
 colorscheme solarized
@@ -298,9 +302,11 @@ augroup END
 
 " Plugins {{{
 
-" ack use ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
+
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 "" Ignore rules
@@ -538,6 +544,12 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Returns true if paste mode is enabled
 function! HasPaste()
