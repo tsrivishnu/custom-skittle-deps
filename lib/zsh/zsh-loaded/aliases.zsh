@@ -71,3 +71,6 @@ case $OSTYPE in
     alias gd='git diff'
     ;;
 esac
+
+## To search and replace using ag: https://gist.github.com/hlissner/db74d23fc00bed81ff62#gistcomment-2578541
+function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
