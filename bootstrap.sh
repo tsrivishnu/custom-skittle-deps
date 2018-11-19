@@ -10,4 +10,5 @@ bootstrap() {
   requrie fzf
   require rofi
   require vim
+  require customize-evolution
 }
