@@ -11,4 +11,5 @@ bootstrap() {
   require rofi
   require vim
   require customize-evolution
+  require gnome-tweaks
 }
