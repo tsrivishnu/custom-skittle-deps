@@ -32,8 +32,13 @@ prompt_git() {
 
 function precmd() {
   current_time=`date +'%H:%M'`
+  if [ -n "$SSH_CLIENT" ]; then
+    ssh_hint=" (@%M)"
+  else
+    ssh_hint=""
+  fi
   print -rP '
-%F{cyan}%D{$current_time} $USERNAME%f %F{yellow}%c%f $(prompt_git)'
+%F{cyan}%D{$current_time} $USERNAME$ssh_hint%f %F{yellow}%c%f $(prompt_git)'
 }
 
 PROMPT='%(?..%F{red}[%?]%f )→ '
