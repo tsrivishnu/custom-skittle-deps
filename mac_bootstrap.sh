@@ -8,4 +8,5 @@ mac_bootstrap() {
   require tmux
   require wget
   require ag
+  require fzf
 }
