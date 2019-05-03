@@ -9,4 +9,5 @@ mac_bootstrap() {
   require wget
   require ag
   require fzf
+  require iterm2
 }
