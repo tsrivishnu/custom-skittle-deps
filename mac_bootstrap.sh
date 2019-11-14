@@ -10,4 +10,5 @@ mac_bootstrap() {
   require ag
   require fzf
   require iterm2
+  require htop
 }
