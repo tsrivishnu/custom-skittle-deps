@@ -309,6 +309,10 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+"" Disable warnings for +vim-go+ that appear everytime vim is started.
+"" Happens when +go+ is not installed on the host machine.
+let g:go_version_warning = 0
+
 "" Ignore rules
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip              " MacOSX/Linux
