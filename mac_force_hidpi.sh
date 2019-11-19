@@ -6,6 +6,7 @@
 #   sudo mount -uw /
 #   sudo killall Finder
 #   ```
+#   See: https://www.reddit.com/r/MacOS/comments/caiue5/macos_catalina_readonly_file_system_with_sip/
 
 mac_force_hidpi() {
   # Forces HiDPI for external monitors.
