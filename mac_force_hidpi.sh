@@ -1,3 +1,12 @@
+# Prerequisites
+# - SIP OFF
+# - Root filesystem mounted for write
+#   - Otherwise, you get +Read-only filesystem+ error when copying files to library
+#   ```
+#   sudo mount -uw /
+#   sudo killall Finder
+#   ```
+
 mac_force_hidpi() {
   # Forces HiDPI for external monitors.
 
