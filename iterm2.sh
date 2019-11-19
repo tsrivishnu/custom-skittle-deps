@@ -16,4 +16,8 @@ iterm2() {
       echolog "Can't install iterm2 for non-MacOS distributions"
     fi
   }
+
+  require dir_exists $HOME/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch
+  require symlink_exists $p/lib/iterm/change-profile-on-theme-change-macos.py $HOME/Library/ApplicationSupport/iTerm2/Scripts/AutoLaunch/change-profile-on-os-theme-change.py
+
 }
