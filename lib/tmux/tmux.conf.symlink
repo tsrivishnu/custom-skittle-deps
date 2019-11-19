@@ -23,7 +23,7 @@ bind r source-file ~/.tmux.conf \;
 # Customize status bar
 set-option -g status-bg colour236
 set-option -g status-fg colour14
-set-option -g status-attr default
+#set-option -g status-style default
 
 # Left hand side
 set -g status-left ' #S '
@@ -38,7 +38,7 @@ set -g base-index 1
 set-option -g allow-rename off
 
 # Highlight current window
-set-window-option -g window-status-current-fg white
+set-window-option -g window-status-current-style fg=white
 
 # Set Vi Mode
 set-window-option -g mode-keys vi
