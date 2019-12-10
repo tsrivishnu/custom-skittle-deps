@@ -12,3 +12,4 @@ if [ -e $ZSH_LOADED_ROOT/overwrites.zsh ];
 then
   source $ZSH_LOADED_ROOT/overwrites.zsh
 fi
+export PATH="/usr/local/sbin:$PATH"

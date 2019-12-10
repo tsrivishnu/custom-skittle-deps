@@ -11,4 +11,5 @@ mac_bootstrap() {
   require fzf
   require iterm2
   require htop
+  require nethogs
 }
