@@ -12,4 +12,5 @@ mac_bootstrap() {
   require iterm2
   require htop
   require nethogs
+  require rectangleapp
 }
