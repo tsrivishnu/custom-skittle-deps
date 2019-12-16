@@ -33,6 +33,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/fzf'
+Plugin 'haya14busa/vim-poweryank'
 "" Shell/non-Vim interfacing
 Plugin 'airblade/vim-gitgutter'
 Plugin 'amiel/vim-tmux-navigator'
@@ -470,7 +471,8 @@ autocmd BufReadPost *
 set viminfo^=%
 
 vnoremap <silent> <leader>p "+gp
-vnoremap <silent> <leader>y "+y
+" vnoremap <silent> <leader>y "+y
+map <Leader>y <Plug>(operator-poweryank-osc52)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
