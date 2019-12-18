@@ -12,4 +12,8 @@ bootstrap() {
   require package_installed htop
   require package_installed nethogs
   require package_installed tree
+  require package_installed unzip
+
+  require aws
+  require terraform
 }
