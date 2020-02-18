@@ -16,4 +16,6 @@ bootstrap() {
 
   require aws
   require terraform
+  require packer
+  require package_installed ansible
 }
