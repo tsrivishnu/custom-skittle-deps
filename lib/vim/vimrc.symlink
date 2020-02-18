@@ -45,24 +45,25 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-ragtag'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'hashivim/vim-terraform'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'thoughtbot/vim-rspec'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/copypath.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/Align'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
-Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'mileszs/ack.vim'
 let s:usestate = 0
 " All of your Plugins must be added before the following line
@@ -381,6 +382,12 @@ let g:multi_cursor_prev_key='<C-D>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" }}}
+
+
+""  terraform {{
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 " }}}
 
 " Custom Functions and Mapping {{{
