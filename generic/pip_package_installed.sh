@@ -10,9 +10,9 @@ pip_package_installed() {
 
   meet() {
     if [[ $pip_name == "" ]]; then
-      sudo pip install $name
+      sudo pip3 install $name
     else
-      sudo pip install $pip_name
+      sudo pip3 install $pip_name
     fi
   }
 
