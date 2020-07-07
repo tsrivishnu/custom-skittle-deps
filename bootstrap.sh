@@ -18,4 +18,7 @@ bootstrap() {
   require terraform
   require packer
   require package_installed ansible
+
+  require docker
+  require docker-compose
 }
