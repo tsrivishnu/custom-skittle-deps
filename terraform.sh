@@ -4,7 +4,7 @@ terraform() {
   }
 
   meet() {
-    version=0.12.18
+    version=0.12.28
     if [[ "$(uname)" = "Darwin" ]]; then
       package=terraform_${version}_darwin_amd64.zip
     else
