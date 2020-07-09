@@ -21,4 +21,8 @@ bootstrap() {
 
   require docker
   require docker-compose
+
+  # For GPG agent forwarding via SSH
+  # See: https://wiki.gnupg.org/AgentForwarding
+  require line_in_file_with_sudo "StreamLocalBindUnlink yes" /etc/ssh/sshd_config
 }
