@@ -450,10 +450,22 @@ map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <c-j> <C-W>j
-map <c-k> <C-W>k
-map <c-h> <C-W>h
-map <c-l> <C-W>l
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+" Don't let netrw override <C-l> to move between windows
+" https://vi.stackexchange.com/a/5532
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+function! NetrwMapping()
+  nnoremap <silent> <buffer> <C-j> <C-W>j
+  nnoremap <silent> <buffer> <C-k> <C-W>k
+  nnoremap <silent> <buffer> <C-h> <C-W>h
+  nnoremap <silent> <buffer> <C-l> <C-W>l
+endfunction
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
