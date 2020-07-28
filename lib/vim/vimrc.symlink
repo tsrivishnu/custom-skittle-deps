@@ -65,6 +65,8 @@ Plugin 'cyphactor/vim-open-alternate'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
 Plugin 'mileszs/ack.vim'
+Plugin 'jamessan/vim-gnupg'
+
 let s:usestate = 0
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -618,3 +620,9 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " }}}
+"
+
+" Working with GPG encrypted files
+" http://www.futurile.net/2017/05/14/editing-encrypting-files-with-gnupg-vim/
+let g:GPGPreferArmor=1
+let g:GPGDefaultRecipients=["srivishnu@totakura.in"]
