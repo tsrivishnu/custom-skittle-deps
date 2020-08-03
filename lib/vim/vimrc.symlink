@@ -42,16 +42,12 @@ Plugin 'rking/ag.vim'
 Plugin 'fatih/vim-go'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'davidoc/taskpaper.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-ragtag'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'thoughtbot/vim-rspec'
-" Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/copypath.vim'
@@ -369,12 +365,6 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-
-" RSpec.vim mappings
-map <Leader>st :call RunCurrentSpecFile()<CR>
-map <Leader>ss :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-map <Leader>sa :call RunAllSpecs()<CR>
 
 " OpenAlternate
 nnoremap <leader>. :OpenAlternate<cr>
