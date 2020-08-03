@@ -626,3 +626,8 @@ endfunction
 " http://www.futurile.net/2017/05/14/editing-encrypting-files-with-gnupg-vim/
 let g:GPGPreferArmor=1
 let g:GPGDefaultRecipients=["srivishnu@totakura.in"]
+
+" Timeout looking for matching paranthesis for +matchparen+ plugin
+" See: https://vi.stackexchange.com/a/5318
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
