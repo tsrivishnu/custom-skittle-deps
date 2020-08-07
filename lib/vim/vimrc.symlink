@@ -27,12 +27,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'endwise.vim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/fzf'
+Plugin 'tracyone/fzf-funky',{'on': 'FzfFunky'}
 Plugin 'haya14busa/vim-poweryank'
 "" Shell/non-Vim interfacing
 Plugin 'airblade/vim-gitgutter'
@@ -51,7 +51,6 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/copypath.vim'
-Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/Align'
@@ -330,29 +329,12 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip              " MacOSX/Linux
 set wildignore+=*/node_modules/*,*/bower_components/* " Node.js
 set wildignore+=*/dist/*                   " Meh
 set wildignore+=*/.bundle/* " Ruby
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|bundle)$'
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
 
-" ctrl-p
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_files = 100000
-let g:ctrlp_match_window = 'results:100' " overcome limit imposed by max height
 
-nmap <C-i> :CtrlPBuffer<cr>
-" to make open in new tab default
-" let g:ctrlp_prompt_mappings = {
-"     \ 'AcceptSelection("e")': ['<c-t>'],
-"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-"     \ }
-
-" ctrlp-funky
-nnoremap <Leader>fu :CtrlPFunky<Cr>
+" fzf-funky
+nnoremap <Leader>fu :FzfFunky<Cr>
 " narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <Leader>fU :execute 'FzfFunky ' . expand('<cword>')<Cr>
 
 " Ignore .gitignore'd files in FZF
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
