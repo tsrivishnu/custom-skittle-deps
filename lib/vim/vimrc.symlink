@@ -48,7 +48,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/copypath.vim'
 Plugin 'tpope/vim-unimpaired'
@@ -215,8 +215,10 @@ let g:mapleader = ","
 
 " Vertical split
 nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>\| <C-w>v<C-w>l
 " Horizontal split
 nnoremap <leader>h <C-w>s<C-w>l
+nnoremap <leader>- <C-w>s<C-w>l
 
 " resize window to fullsize or otherwise
 nnoremap <leader>+ <C-w>_<C-w>\|
@@ -369,18 +371,6 @@ let g:terraform_fmt_on_save=1
 " }}}
 
 " Custom Functions and Mapping {{{
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
 "Uses dictionary and source files to find matching words to complete.
@@ -586,5 +576,5 @@ let g:GPGDefaultRecipients=["srivishnu@totakura.in"]
 
 " Timeout looking for matching paranthesis for +matchparen+ plugin
 " See: https://vi.stackexchange.com/a/5318
-let g:matchparen_timeout = 10
-let g:matchparen_insert_timeout = 10
+let g:matchparen_timeout = 2
+let g:matchparen_insert_timeout = 2
