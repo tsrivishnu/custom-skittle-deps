@@ -6,7 +6,7 @@ alias weather='curl http://wttr\.in/Munich'
 alias "c"='clear'
 
 if ! type vim > /dev/null; then
-  alias vim=vi
+  alias vim=nvim
 fi
 # If neovim is installed, set that as default
 if type nvim > /dev/null; then

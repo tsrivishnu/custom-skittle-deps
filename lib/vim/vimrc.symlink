@@ -33,7 +33,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/fzf'
 Plugin 'tracyone/fzf-funky',{'on': 'FzfFunky'}
-Plugin 'haya14busa/vim-poweryank'
 "" Shell/non-Vim interfacing
 Plugin 'airblade/vim-gitgutter'
 Plugin 'amiel/vim-tmux-navigator'
@@ -48,6 +47,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'posva/vim-vue'
 " Plugin 'Lokaltog/vim-easymotion'
 Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/copypath.vim'
@@ -60,6 +60,7 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'vim-scripts/visualrepeat'
 Plugin 'mileszs/ack.vim'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'ojroques/vim-oscyank'
 
 let s:usestate = 0
 " All of your Plugins must be added before the following line
@@ -189,8 +190,8 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 " }}}
 
-" set the cursorline
-set cursorline
+" set the nocursorline
+" set nocursorline
 
 " Colors {{{
 " set t_ut=
@@ -256,23 +257,23 @@ nnoremap <leader>r :%s/:\(\w*\)\s*=>\s*/\1: /gc<cr>
 " Copy file path/name to clipboard
 " Copy current buffer path relative to root of VIM session to system clipboard
 " nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
-" Copy current buffer path relative to root of VIM session using poweryank
-nnoremap <Leader>yrp :call poweryank#osc52(expand("%"))<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
+" Copy current buffer path relative to root of VIM session using +oscyank+
+nnoremap <Leader>yrp :call YankOSC52(expand("%"))<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
 
 " Copy current buffer full path
 " nnoremap <Leader>yp :let @+=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
-" Copy current buffer full path using poweryank
-nnoremap <Leader>yp :call poweryank#osc52(expand("%:p"))<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
+" Copy current buffer full path using +oscyank+
+nnoremap <Leader>yp :call YankOSC52(expand("%:p"))<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
 
 " Copy current filename to system clipboard
 "nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
-" Copy current filename using poweryank
-nnoremap <Leader>yf :call poweryank#osc52(expand("%:t"))<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
+" Copy current filename using +oscyank+
+nnoremap <Leader>yf :call YankOSC52(expand("%:t"))<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
 
 " Copy current buffer path without filename to system clipboard
 " nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
-" Copy current buffer path without filename using poweryank
-nnoremap <Leader>yd :call poweryank#osc52(expand("%:h"))<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
+" Copy current buffer path without filename using +oscyank+
+nnoremap <Leader>yd :call YankOSC52(expand("%:h"))<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
 
 
 " }}}
@@ -459,7 +460,7 @@ set viminfo^=%
 
 vnoremap <silent> <leader>p "+gp
 " vnoremap <silent> <leader>y "+y
-map <Leader>y <Plug>(operator-poweryank-osc52)
+vnoremap <leader>y :OSCYank<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
@@ -544,6 +545,9 @@ endfunction
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" Don't use popupwindow for FZF
+" let g:fzf_layout = { 'down': '40%' }
+
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -578,3 +582,6 @@ let g:GPGDefaultRecipients=["srivishnu@totakura.in"]
 " See: https://vi.stackexchange.com/a/5318
 let g:matchparen_timeout = 2
 let g:matchparen_insert_timeout = 2
+
+" Use +matchit+ to better match do's and end's for ruby scripts
+runtime macros/matchit.vim
