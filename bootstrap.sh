@@ -22,6 +22,7 @@ bootstrap() {
 
   require docker
   require docker-compose
+  require heroku
 
   # For GPG agent forwarding via SSH
   # See: https://wiki.gnupg.org/AgentForwarding
