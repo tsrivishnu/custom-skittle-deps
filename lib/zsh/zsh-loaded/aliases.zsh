@@ -8,6 +8,10 @@ alias "c"='clear'
 if ! type vim > /dev/null; then
   alias vim=vi
 fi
+# If neovim is installed, set that as default
+if type nvim > /dev/null; then
+  alias vim=nvim
+fi
 
 # RubyOnRails
 alias "rdmt"="RAILS_ENV=test rake db:migrate"

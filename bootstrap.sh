@@ -3,7 +3,7 @@ bootstrap() {
   require pip
   require zsh
   require git
-  require vim
+  require neovim
   require ack
   require tmux
   require package_installed wget

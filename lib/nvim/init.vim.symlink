@@ -1,0 +1,9 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+
+" Disable new regex to make Vim faster with Ruby file
+" See: https://github.com/neovim/neovim/issues/4930#issuecomment-230477987
+" and https://www.reddit.com/r/vim/comments/8ggdqn/undocumented_tips_make_your_vim_1020x_times_faster/
+set re=1
+
+source ~/.vimrc
