@@ -15,6 +15,7 @@ bootstrap() {
   require package_installed unzip
 
   require aws
+  require azure
   require terraform
   require packer
   require package_installed ansible
