@@ -4,7 +4,7 @@ terraform() {
   }
 
   meet() {
-    version=0.12.28
+    version=1.0.2
     if [[ "$(uname)" = "Darwin" ]]; then
       package=terraform_${version}_darwin_amd64.zip
     else
@@ -12,7 +12,8 @@ terraform() {
     fi
     curl "https://releases.hashicorp.com/terraform/$version/$package" -o "terraform_$version.zip"
     unzip -o terraform_$version.zip
-    sudo mv terraform /usr/local/bin/
+    sudo cp terraform /usr/local/bin/terraform$version
+    sudo mv terraform /usr/local/bin/terraform
     rm terraform_$version.zip
   }
 }
