@@ -28,4 +28,10 @@ bootstrap() {
   # For GPG agent forwarding via SSH
   # See: https://wiki.gnupg.org/AgentForwarding
   require line_in_file_with_sudo "StreamLocalBindUnlink yes" /etc/ssh/sshd_config
+
+  # Disable password login via SSH
+  require line_in_file_with_sudo "PermitRootLogin no" /etc/ssh/sshd_config
+  require line_in_file_with_sudo "PasswordAuthentication no" /etc/ssh/sshd_config
+  require line_in_file_with_sudo "PermitEmptyPasswords no" /etc/ssh/sshd_config
+  require line_in_file_with_sudo "ChallengeResponseAuthentication no" /etc/ssh/sshd_config
 }
