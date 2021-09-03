@@ -1,4 +1,8 @@
 aws() {
-  require pip_package_installed aws awscli
-  # require pip_package_installed ec2-ssh ec2-ssh
+  if [[ "$(uname)" = "Darwin" ]]; then
+    require package_installed aws awscli awscli
+  else
+    require pip_package_installed aws awscli
+  fi
 }
+
