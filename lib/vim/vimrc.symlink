@@ -194,12 +194,29 @@ set directory=~/.vim/backup/
 " set nocursorline
 
 " Colors {{{
-" set t_ut=
-" set t_Co=256
 syntax enable
 set background=light
 colorscheme solarized
 nnoremap H :set cursorline!<CR>
+
+" ChangeBackground changes the background mode based on macOS's `Appearance`
+" setting. We also refresh the statusline colors to reflect the new mode.
+" Works only on MacOS.
+" See: https://arslan.io/2021/02/15/automatic-dark-mode-for-terminal-applications/
+function! ChangeBackground()
+  if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+    set background=dark   " for the dark version of the theme
+  else
+    set background=light  " for the light version of the theme
+  endif
+
+  try
+    execute "AirlineRefresh"
+  catch
+  endtry
+endfunction
+" initialize the colorscheme for the first run
+call ChangeBackground()
 " }}}
 
 " Rspec command. Expects rspec executable to be present at +.vim/bin/rspec+
