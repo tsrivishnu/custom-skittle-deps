@@ -62,6 +62,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'ojroques/vim-oscyank'
 
+let g:vue_pre_processors = []
+
 let s:usestate = 0
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
