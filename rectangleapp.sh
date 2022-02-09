@@ -1,7 +1,7 @@
 rectangleapp() {
 
   is_met() {
-    [ -d "/Applications/rectangle.app" ]
+    [ -d "/Applications/Rectangle.app" ]
   }
 
   meet() {
