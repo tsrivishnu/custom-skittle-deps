@@ -6,7 +6,7 @@ rectangleapp() {
 
   meet() {
     if [[ $(uname) = 'Darwin' ]]; then
-      brew cask install rectangle
+      brew install --cask rectangle
     else
       echolog "Can't install Rectangle app for non-MacOS distributions"
     fi

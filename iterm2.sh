@@ -6,7 +6,7 @@ iterm2() {
 
   meet() {
     if [[ $(uname) = 'Darwin' ]]; then
-      brew cask install iterm2
+      brew install --cask iterm2
 
       # Specify the preferences directory
       defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$p/lib/iterm"

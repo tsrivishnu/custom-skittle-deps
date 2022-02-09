@@ -20,5 +20,5 @@ mac_force_hidpi() {
   require symlink_exists $p/lib/mac-hidpi-resolution-fix/dell-u2719dc /Library/Displays/Contents/Resources/Overrides/DisplayVendorID-10ac/DisplayProductID-419C
   # If it doesn't seem to work. Try this project: https://github.com/syscl/Enable-HiDPI-OSX
 
-  echo "Use RDM app to choose a scaled reslution"
+  echo "Use RDM app (https://github.com/usr-sse2/RDM) to choose a scaled reslution"
 }
