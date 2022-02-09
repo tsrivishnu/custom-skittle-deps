@@ -6,4 +6,16 @@ let &packpath=&runtimepath
 " and https://www.reddit.com/r/vim/comments/8ggdqn/undocumented_tips_make_your_vim_1020x_times_faster/
 set re=1
 
+
+" Initialize vim-plug plugin system
+" See: https://github.com/junegunn/vim-plug#example
+call plug#begin("~/.vim/plugged")
+
+" If you don't have nodejs and yarn
+" use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
+" see: https://github.com/iamcco/markdown-preview.nvim/issues/50
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+call plug#end()
+
 source ~/.vimrc
