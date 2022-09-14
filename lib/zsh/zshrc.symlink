@@ -1,3 +1,5 @@
+zmodload zsh/zprof # See end of the file to see where the profiling log is writting
+
 # Get location of the zsh-loaded folder
 SYMLINK_LOCATION=`readlink ~/.zshrc`
 LIB_ZSH_ROOT=`dirname $SYMLINK_LOCATION`
@@ -13,3 +15,5 @@ then
   source $ZSH_LOADED_ROOT/overwrites.zsh
 fi
 export PATH="/usr/local/sbin:$PATH"
+
+zprof > ~/.zprof.last.log # bottom of .zshrc
