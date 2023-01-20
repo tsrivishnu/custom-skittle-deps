@@ -62,3 +62,11 @@ bind-key -T copy-mode-vi 'v' send -X begin-selection
 
 # load OS-specific configuration
 if-shell "uname | grep -q Darwin" "source-file ~/.tmux-macosx.conf" "source-file ~/.tmux-linux.conf"
+
+# Clipboard and OSC52 setup.
+# This is also the setup needed to ensure OSC52 copying works from VIM.
+# See
+#  - https://github.com/ojroques/vim-oscyank#the-plugin-does-not-work-with-tmux
+#  - https://github.com/ojroques/vim-oscyank/issues/26#issuecomment-1151822853
+#  - https://github.com/tmux/tmux/wiki/Clipboard
+set -s set-clipboard on

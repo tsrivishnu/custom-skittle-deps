@@ -273,6 +273,9 @@ nnoremap <leader><leader> <c-^>
 " Ruby hashrocket madness
 nnoremap <leader>r :%s/:\(\w*\)\s*=>\s*/\1: /gc<cr>
 
+" Support OSC 52 clipboard copy/paste. See:
+" See: https://github.com/ojroques/vim-oscyank/issues/26#issuecomment-1151822853
+let g:oscyank_term = 'default'
 " Copy file path/name to clipboard
 " Copy current buffer path relative to root of VIM session to system clipboard
 " nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
