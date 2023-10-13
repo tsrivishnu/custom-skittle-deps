@@ -19,5 +19,5 @@ neovim() {
   require dir_exists $HOME/.vim/undo
 
   require dir_exists $HOME/.config/nvim
-  require symlink_exists $p/lib/nvim/init.vim.symlink $HOME/.config/nvim/init.vim
+  require symlink_exists $p/lib/nvim/init.lua $HOME/.config/nvim/init.lua
 }
