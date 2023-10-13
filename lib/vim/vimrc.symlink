@@ -45,7 +45,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-ragtag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'hashivim/vim-terraform'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'posva/vim-vue'
 " Plugin 'Lokaltog/vim-easymotion'
@@ -62,13 +61,14 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'ojroques/vim-oscyank'
 
-let g:vue_pre_processors = []
-
-let s:usestate = 0
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 " }}}
+
+let g:vue_pre_processors = []
+
+let s:usestate = 0
 
 " zavimrc settings {{{
 "
@@ -385,12 +385,6 @@ highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 " disable folding
 set nofoldenable
 
-" }}}
-
-
-""  terraform {{
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
 " }}}
 
 " Custom Functions and Mapping {{{

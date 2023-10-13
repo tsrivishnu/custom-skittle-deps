@@ -15,7 +15,14 @@ call plug#begin("~/.vim/plugged")
 " use pre build, add 'vim-plug' to the filetype list so vim-plug can update this plugin
 " see: https://github.com/iamcco/markdown-preview.nvim/issues/50
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'github/copilot.vim'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
+
+""  terraform {{
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+" }}}
 
 source ~/.vimrc
