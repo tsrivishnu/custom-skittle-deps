@@ -4,7 +4,7 @@ packer() {
   }
 
   meet() {
-    version=1.5.1
+    version=1.8.7
     if [[ "$(uname)" = "Darwin" ]]; then
       package=packer_${version}_darwin_amd64.zip
     else
