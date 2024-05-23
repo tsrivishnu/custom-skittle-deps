@@ -1,6 +1,9 @@
 -- Help with regard to migrating to lua config:
 -- https://www.notonlycode.org/neovim-lua-config/
 
+-- source the old vimrc
+vim.cmd [[source ~/.vimrc]]
+
 -- This is safety net when migration from init.vim to init.lua. Take
 -- time and move them out later
 vim.cmd([[
@@ -37,8 +40,17 @@ require('packer').startup(function(use)
   use 'github/copilot.vim'
   use 'hashivim/vim-terraform'
   use 'neovim/nvim-lspconfig'
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
+  use({
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -51,9 +63,13 @@ end)
 vim.g.terraform_align = 1
 vim.g.terraform_fmt_on_save = 1
 
--- Configure volar (vue language server)
-require'lspconfig'.volar.setup{
+-- Configure LSP
+-- lsp keymappings. See: https://github.com/neovim/nvim-lspconfig/tree/master
+-- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+local lspconfig = require('lspconfig')
+lspconfig.volar.setup {
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
-
-vim.cmd [[source ~/.vimrc]]

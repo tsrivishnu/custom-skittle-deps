@@ -1,0 +1,11 @@
+[user]
+  name = Sri Vishnu Totakura
+  email = 2265280+tsrivishnu@users.noreply.github.com
+  signingkey = 8A192F91
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[gpg]
+	program = gpg
