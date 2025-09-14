@@ -19,66 +19,13 @@ endif
 
 set mouse=r
 
-" let g:solarized_termcolors=256
-
 " let Vundle manage Vundle, required
 "" Vim config
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'endwise.vim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'junegunn/fzf'
-Plugin 'tracyone/fzf-funky',{'on': 'FzfFunky'}
-"" Shell/non-Vim interfacing
-Plugin 'airblade/vim-gitgutter'
-Plugin 'amiel/vim-tmux-navigator'
-Plugin 'rking/ag.vim'
-"" Language specific
-Plugin 'fatih/vim-go'
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-ragtag'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'posva/vim-vue'
-" Plugin 'Lokaltog/vim-easymotion'
-Plugin 'danro/rename.vim'
-Plugin 'vim-scripts/copypath.vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'vim-scripts/Align'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'cyphactor/vim-open-alternate'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'vim-scripts/visualrepeat'
-Plugin 'mileszs/ack.vim'
-Plugin 'jamessan/vim-gnupg'
 Plugin 'ojroques/vim-oscyank'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-
-" }}}
-
-let g:vue_pre_processors = 'detect_on_enter'
-
-let s:usestate = 0
-
-" zavimrc settings {{{
-"
-" .vimrc folding
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" Fold with space
-" nnoremap <space> za
 
 " }}}
 
@@ -192,57 +139,7 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/backup/
 " }}}
 
-" set the nocursorline
-" set nocursorline
-
-" Colors {{{
-syntax enable
-set background=light
-colorscheme solarized
-nnoremap H :set cursorline!<CR>
-
-" ChangeBackground changes the background mode based on macOS's `Appearance`
-" setting. We also refresh the statusline colors to reflect the new mode.
-" Works only on MacOS.
-" See: https://arslan.io/2021/02/15/automatic-dark-mode-for-terminal-applications/
-function! ChangeBackground()
-  if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-    set background=dark   " for the dark version of the theme
-  else
-    set background=light  " for the light version of the theme
-  endif
-
-  try
-    execute "AirlineRefresh"
-  catch
-  endtry
-endfunction
-" initialize the colorscheme for the first run
-call ChangeBackground()
-" }}}
-
-" Rspec command. Expects rspec executable to be present at +.vim/bin/rspec+
-let g:rspec_command = "!.vim/bin/rspec {spec}"
-
 " Key commands {{{
-
-" Wrapped lines goes down/up to next row, rather than next line in file.
-noremap j gj
-noremap k gk
-
-let mapleader = ","
-let g:mapleader = ","
-
-" Vertical split
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>\| <C-w>v<C-w>l
-" Horizontal split
-nnoremap <leader>h <C-w>s<C-w>l
-nnoremap <leader>- <C-w>s<C-w>l
-
-" resize window to fullsize or otherwise
-nnoremap <leader>+ <C-w>_<C-w>\|
-nnoremap <leader>= <C-w>=
 
 " j-k smash
 inoremap jk <esc>
@@ -278,24 +175,24 @@ nnoremap <leader>r :%s/:\(\w*\)\s*=>\s*/\1: /gc<cr>
 let g:oscyank_term = 'default'
 " Copy file path/name to clipboard
 " Copy current buffer path relative to root of VIM session to system clipboard
-" nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
+nnoremap <Leader>yrp :let @+=expand("%")<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
 " Copy current buffer path relative to root of VIM session using +oscyank+
-nnoremap <Leader>yrp :call YankOSC52(expand("%"))<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
+" nnoremap <Leader>yrp :call YankOSC52(expand("%"))<cr>:echo "Copied relative file path to clipboard - ".expand("%")<cr>
 
 " Copy current buffer full path
-" nnoremap <Leader>yp :let @+=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
+nnoremap <Leader>yp :let @+=expand("%:p")<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
 " Copy current buffer full path using +oscyank+
-nnoremap <Leader>yp :call YankOSC52(expand("%:p"))<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
+" nnoremap <Leader>yp :call YankOSC52(expand("%:p"))<cr>:echo "Copied file path to clipboard - ".expand("%:p")<cr>
 
 " Copy current filename to system clipboard
-"nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
+nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
 " Copy current filename using +oscyank+
-nnoremap <Leader>yf :call YankOSC52(expand("%:t"))<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
+" nnoremap <Leader>yf :call YankOSC52(expand("%:t"))<cr>:echo "Copied file name to clipboard - ".expand("%:t")<cr>
 
 " Copy current buffer path without filename to system clipboard
-" nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
+nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
 " Copy current buffer path without filename using +oscyank+
-nnoremap <Leader>yd :call YankOSC52(expand("%:h"))<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
+" nnoremap <Leader>yd :call YankOSC52(expand("%:h"))<cr>:echo "Copied file directory to clipboard - ".expand("%:h")<cr>
 
 
 " }}}
@@ -356,22 +253,6 @@ set wildignore+=*/dist/*                   " Meh
 set wildignore+=*/.bundle/* " Ruby
 
 
-" fzf-funky
-nnoremap <Leader>fu :FzfFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'FzfFunky ' . expand('<cword>')<Cr>
-
-" Ignore .gitignore'd files in FZF
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme="solarized"
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-
 " OpenAlternate
 nnoremap <leader>. :OpenAlternate<cr>
 
@@ -422,11 +303,6 @@ map <c-space> ?
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 " Don't let netrw override <C-l> to move between windows
 " https://vi.stackexchange.com/a/5532
 augroup netrw_mapping
@@ -440,54 +316,11 @@ function! NetrwMapping()
   nnoremap <silent> <buffer> <C-l> <C-W>l
 endfunction
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-" Remember info about open buffers on close
-set viminfo^=%
 
 vnoremap <silent> <leader>p "+gp
 " vnoremap <silent> <leader>y "+y
 vnoremap <leader>y :OSCYank<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-" from
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
-
-" Open vimgrep and put the cursor in the right position
-map <leader>g :noautocmd vimgrep // **/*.<left><left><left><left><left><left><left>
-map <leader>r :call GlobalReplace()
 
 function! GlobalReplace()
   execute "set nomore"
@@ -495,102 +328,16 @@ function! GlobalReplace()
   call CmdLine("argdo %s" . '///gce | update<left><left><left><left><left><left><left><left><left><left><left><left><left>')
 endfunction
 
-" Vimgreps in the current file
-map <leader><space> :noautocmd vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
-" When you press gr you can search and replace the selected text
-vnoremap <silent> rg :call VisualSelection('replace')<CR>
-vnoremap <silent> Rg :call VisualSelection('global_replace')<CR>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
-endfunction
-
-function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("noautocmd vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '//gce<left><left><left><left>')
-    elseif a:direction == 'global_replace'
-        " Remember to do argadd **/* before trying to replace globally
-        execute "set nomore"
-        call CmdLine("argdo %s" . '/'. l:pattern . '//gce | update<left><left><left><left><left><left><left><left><left><left><left><left><left>')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    elseif a:direction == 'clip_yank'
-        execute "\"+gy"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" Don't use popupwindow for FZF
-" let g:fzf_layout = { 'down': '40%' }
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-
-" }}}
-"
 
 " Working with GPG encrypted files
 " http://www.futurile.net/2017/05/14/editing-encrypting-files-with-gnupg-vim/
 let g:GPGPreferArmor=1
+
 let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=["srivishnu@totakura.in"]
 
@@ -601,10 +348,3 @@ let g:matchparen_insert_timeout = 2
 
 " Use +matchit+ to better match do's and end's for ruby scripts
 runtime macros/matchit.vim
-
-" Switch to last active tab with ,tl
-if !exists('g:lasttab')
-  let g:lasttab = 1
-endif
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
