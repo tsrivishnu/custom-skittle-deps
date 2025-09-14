@@ -1178,6 +1178,8 @@
 			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>No</string>
+			<key>Custom Locale</key>
+			<string>en_GB</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -1562,6 +1564,8 @@
 			<false/>
 			<key>Send Terminal Generated Alerts</key>
 			<true/>
+			<key>Set Local Environment Vars</key>
+			<integer>2</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Mark Indicators</key>

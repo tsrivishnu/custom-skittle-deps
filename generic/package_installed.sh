@@ -11,7 +11,7 @@ package_installed() {
 
   meet() {
     if [[ -x `which brew` ]]; then
-      sudo brew update
+      brew update
       if [[ $brew_name == "" ]]; then
         brew install $binary_name
       else

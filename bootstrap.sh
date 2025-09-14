@@ -14,6 +14,7 @@ bootstrap() {
   require package_installed tree
   require package_installed unzip
   require package_installed jq
+  require package_installed prettier
 
   require aws
   require azure
@@ -23,7 +24,7 @@ bootstrap() {
 
   require docker
   require docker-compose
-  require heroku
+  # require heroku
 
   # For GPG agent forwarding via SSH
   # See: https://wiki.gnupg.org/AgentForwarding
