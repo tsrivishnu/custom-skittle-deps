@@ -19,6 +19,7 @@ let &packpath=&runtimepath
 " set re=1
 ]])
 
+require("config.highlights")
 require("config.lazy")
 
 -- Enable syntax highlighting

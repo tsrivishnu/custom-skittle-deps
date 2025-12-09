@@ -1,4 +1,31 @@
 return {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+    require('nvim-treesitter.configs').setup({
+      ensure_installed = {
+        'typescript',
+        'tsx',
+        'javascript',
+        'json',
+        'lua',
+        'vim',
+        'vimdoc',
+        'bash',
+        'html',
+        'css',
+        'markdown',
+      },
+      -- This will install parsers as you open new file types
+      auto_install = true,
+
+      highlight = {
+        enable = true,
+      },
+    })
+    end,
+  },
   { 'github/copilot.vim' },
   { 'tpope/vim-commentary' },
   { 'tpope/vim-fugitive' },
@@ -26,21 +53,6 @@ return {
   { 'vim-scripts/visualrepeat' },
   { 'mileszs/ack.vim' },
   { 'jamessan/vim-gnupg' },
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      -- Configure LSP
-      -- lsp keymappings. See: https://github.com/neovim/nvim-lspconfig/tree/master
-      -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-      -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-      local lspconfig = require('lspconfig')
-      lspconfig.volar.setup {
-        filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
-      }
-    end
-  },
   {
     'hashivim/vim-terraform',
     config = function()

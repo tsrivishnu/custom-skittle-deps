@@ -24,5 +24,7 @@ neovim() {
   require dir_exists $HOME/.config/nvim/lua/plugins
   require symlink_exists $p/lib/nvim/init.lua $HOME/.config/nvim/init.lua
   require symlink_exists $p/lib/nvim/lua/config/lazy.lua $HOME/.config/nvim/lua/config/lazy.lua
+  require symlink_exists $p/lib/nvim/lua/config/highlights.lua $HOME/.config/nvim/lua/config/highlights.lua
   require symlink_exists $p/lib/nvim/lua/plugins/default_plugins.lua $HOME/.config/nvim/lua/plugins/default_plugins.lua
+  require symlink_exists $p/lib/nvim/lua/plugins/lsp.lua $HOME/.config/nvim/lua/plugins/lsp.lua
 }
