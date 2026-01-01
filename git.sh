@@ -10,6 +10,7 @@ git() {
 
   meet() {
     git clone git@github.com:mhagger/git-when-merged.git /tmp/git-when-merged
+    mkdir -p /usr/local/bin # create this if it is missing. On MacOS homebrew used to create this but doesn't anymore.
     sudo cp /tmp/git-when-merged/bin/git-when-merged /usr/local/bin/
     rm -rf /tmp/git-when-merged
   }
